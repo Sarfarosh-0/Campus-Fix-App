@@ -33,8 +33,6 @@ export default function ReportForm({ onSubmitReport }: ReportFormProps) {
   const [building, setBuilding] = useState(CAMPUS_BUILDINGS[1]); // Default to Hostel B
   const [imageUrl, setImageUrl] = useState('');
   const [roomLabel, setRoomLabel] = useState('');
-  const [localX, setLocalX] = useState(50);
-  const [localY, setLocalY] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -48,15 +46,6 @@ export default function ReportForm({ onSubmitReport }: ReportFormProps) {
 
   // Character count validation (Max 500 chars)
   const isDescriptionValid = description.trim().length > 0 && description.length <= 500;
-
-  // Floor click spot coordinate offset generator
-  const handleFloorClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const clickX = ((e.clientX - rect.left) / rect.width) * 100;
-    const clickY = ((e.clientY - rect.top) / rect.height) * 100;
-    setLocalX(Math.round(clickX));
-    setLocalY(Math.round(clickY));
-  };
 
   // Image upload handling
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -115,10 +104,10 @@ export default function ReportForm({ onSubmitReport }: ReportFormProps) {
     setTriageDetails(null);
 
     try {
-      // Calculate precise building offset coordinates
+      // Calculate building coordinates
       const center = BUILDING_CENTERS[building] || { x: 50, y: 50 };
-      const computedLat = center.x + (localX - 50) * 0.15;
-      const computedLng = center.y + (localY - 50) * 0.15;
+      const computedLat = center.x;
+      const computedLng = center.y;
 
       // Submit through central app handler (which posts to /api/reports)
       const parsedTriageResult = await onSubmitReport({
@@ -140,8 +129,6 @@ export default function ReportForm({ onSubmitReport }: ReportFormProps) {
       setDescription('');
       setImageUrl('');
       setRoomLabel('');
-      setLocalX(50);
-      setLocalY(50);
     } catch (err: any) {
       console.error(err);
       setError('AI Triage pipeline broke. Please try again.');
@@ -268,41 +255,6 @@ export default function ReportForm({ onSubmitReport }: ReportFormProps) {
                 placeholder="e.g. Room 302, Hallway B"
                 className="w-full bg-white/20 dark:bg-slate-900/20 border border-white/40 dark:border-white/10 rounded-btn px-3.5 py-2 text-sm text-ink-primary focus:border-primary-blue focus:outline-none transition min-h-[42px] placeholder-text-secondary backdrop-blur-sm"
               />
-            </div>
-
-            <div>
-              <label className="block text-[10px] font-bold uppercase tracking-wider text-text-secondary mb-1.5 select-none">
-                🗺️ Floor Schematic (Pinpoint Spot)
-              </label>
-              <div
-                onClick={handleFloorClick}
-                className="w-full h-32 bg-slate-100/50 dark:bg-slate-950/45 border border-dashed border-white/40 dark:border-white/10 rounded-lg relative overflow-hidden cursor-crosshair hover:bg-slate-200/50 dark:hover:bg-slate-900/40 transition-all duration-300 shadow-inner"
-              >
-                {/* Simulated floor rooms overlay */}
-                <div className="absolute inset-0 grid grid-cols-3 grid-rows-2 text-[9px] text-text-secondary/40 font-bold p-1 select-none pointer-events-none">
-                  <div className="border-r border-b border-white/5 p-1">Lobby</div>
-                  <div className="border-r border-b border-white/5 p-1">Office</div>
-                  <div className="border-b border-white/5 p-1">Exit</div>
-                  <div className="border-r border-white/5 p-1">Corridor</div>
-                  <div className="border-r border-white/5 p-1">Restroom</div>
-                  <div className="p-1">Stairs</div>
-                </div>
-
-                {/* Pinpoint Indicator */}
-                <div
-                  style={{
-                    left: `${localX}%`,
-                    top: `${localY}%`
-                  }}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
-                >
-                  <span className="absolute h-6 w-6 rounded-full bg-critical-red animate-ping opacity-45 pointer-events-none"></span>
-                  <span className="h-3 w-3 bg-critical-red rounded-full border-2 border-white shadow-md"></span>
-                </div>
-              </div>
-              <p className="text-[9px] text-text-secondary mt-1 select-none">
-                Click room block to plot precise coordinate offset.
-              </p>
             </div>
           </div>
 

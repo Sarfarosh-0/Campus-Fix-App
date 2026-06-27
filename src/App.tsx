@@ -334,7 +334,7 @@ export default function App() {
             <p className="text-xs text-text-secondary mt-1 font-medium">
               {user.role === 'authority' 
                 ? 'Review live diagnostics, manage ticket status queues, and trace real-time compliance SLA metrics.' 
-                : 'Lodge physical failure incidents with base64 evidence uploads, automatic AI triage categorization, and precise floor plotting.'}
+                : 'Lodge physical failure incidents with base64 evidence uploads, automatic AI triage categorization, and specific room details.'}
             </p>
           </div>
           

@@ -8,7 +8,7 @@ A next-generation, high-performance web platform designed to streamline campus o
 
 Experience the active live platform prototype:
 
-👉 **https://campusfix-735977459823.asia-southeast1.run.app**
+👉 **[View Live Platform Prototype](https://ais-pre-h6uumahvrkvokbe4w4hltm-1064249208973.asia-southeast1.run.app)**
 
 ---
 
@@ -19,7 +19,7 @@ The application is architected around two high-fidelity, user-centric dashboards
 ### 📢 Reporter Panel
 *   **Intuitive Incident Filing:** Simple, structured reporting mechanism for physical failures, safety hazards, and resource requests.
 *   **Base64 Evidence Uploads:** Submit visual confirmation or documentation attachments on the fly with real-time feedback.
-*   **Interactive Floor Plotting:** Drag-and-drop locator marker system to specify exact campus zones, building levels, and rooms.
+*   **Specific Room Mapping:** Specify the target campus zones, buildings, and exact room levels for swift dispatching.
 
 ### 🛡️ Authority Panel
 *   **Real-Time Category Management:** Browse reported categories efficiently with a responsive horizontal scrollbar/queue carousel that avoids text clipping.
