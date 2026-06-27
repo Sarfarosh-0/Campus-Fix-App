@@ -8,7 +8,7 @@ A next-generation, high-performance web platform designed to streamline campus o
 
 Experience the active live platform prototype:
 
-👉 **[View Live Platform Prototype](https://ais-pre-h6uumahvrkvokbe4w4hltm-1064249208973.asia-southeast1.run.app)**
+👉 **https://campusfix-735977459823.asia-southeast1.run.app**
 
 ---
 
