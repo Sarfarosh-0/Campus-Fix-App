@@ -1,0 +1,6 @@
+{
+  "name": "CampusFix",
+  "description": "Campus infrastructure localized issue reporting, AI-triage, and live-status-tracking platform for the BlockseBlock Build Challenge 2026.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

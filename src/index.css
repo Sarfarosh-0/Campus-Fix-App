@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Brand colors matching Clean Minimalism */
+  --color-primary-blue: #3B82F6;
+  --color-primary-blue-dark: #2563EB;
+  --color-primary-blue-tint: rgba(239, 246, 255, 0.6);
+  
+  /* Status theme colors */
+  --color-success-green: #10B981;
+  --color-success-tint: rgba(236, 253, 245, 0.6);
+  --color-warning-amber: #F59E0B;
+  --color-warning-tint: rgba(254, 243, 199, 0.6);
+  --color-critical-red: #EF4444;
+  --color-critical-tint: rgba(254, 242, 242, 0.6);
+  
+  /* Text and base surfaces matching Clean Minimalism spec */
+  --color-ink-primary: #0F172A;
+  --color-text-secondary: #64748B;
+  --color-surface-bg: #F8FAFC;
+  --color-surface-card: rgba(255, 255, 255, 0.7);
+  --color-border-divider: rgba(226, 232, 240, 0.8);
+  
+  /* Category colors optimized for contrast */
+  --color-cat-infrastructure: #3B82F6;
+  --color-cat-canteen: #F59E0B;
+  --color-cat-safety: #EF4444;
+  --color-cat-connectivity: #06B6D4;
+}
+
+/* Elegant and eye-safe dark mode overrides */
+.dark {
+  --color-ink-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-surface-bg: #0B0F19;
+  --color-surface-card: rgba(21, 27, 38, 0.7);
+  --color-border-divider: rgba(38, 47, 64, 0.8);
+
+  --color-primary-blue: #60A5FA;
+  --color-primary-blue-dark: #3B82F6;
+  --color-primary-blue-tint: rgba(30, 41, 59, 0.6);
+
+  --color-success-green: #34D399;
+  --color-success-tint: rgba(6, 78, 59, 0.6);
+  --color-warning-amber: #FBBF24;
+  --color-warning-tint: rgba(120, 53, 15, 0.6);
+  --color-critical-red: #F87171;
+  --color-critical-tint: rgba(127, 29, 29, 0.6);
+
+  --color-cat-infrastructure: #60A5FA;
+  --color-cat-canteen: #FBBF24;
+  --color-cat-safety: #F87171;
+  --color-cat-connectivity: #22D3EE;
+}
+
+@theme {
+  --color-primary-blue: var(--color-primary-blue);
+  --color-primary-blue-dark: var(--color-primary-blue-dark);
+  --color-primary-blue-tint: var(--color-primary-blue-tint);
+  
+  --color-success-green: var(--color-success-green);
+  --color-success-tint: var(--color-success-tint);
+  --color-warning-amber: var(--color-warning-amber);
+  --color-warning-tint: var(--color-warning-tint);
+  --color-critical-red: var(--color-critical-red);
+  --color-critical-tint: var(--color-critical-tint);
+  
+  --color-ink-primary: var(--color-ink-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-surface-bg: var(--color-surface-bg);
+  --color-surface-card: var(--color-surface-card);
+  --color-border-divider: var(--color-border-divider);
+  
+  --color-cat-infrastructure: var(--color-cat-infrastructure);
+  --color-cat-canteen: var(--color-cat-canteen);
+  --color-cat-safety: var(--color-cat-safety);
+  --color-cat-connectivity: var(--color-cat-connectivity);
+
+  /* Typography Fallbacks */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* Radius overrides representing premium curves */
+  --radius-card: 20px;
+  --radius-btn: 14px;
+  --radius-badge: 9999px;
+
+  /* Custom shadows */
+  --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+body {
+  background-color: var(--color-surface-bg);
+  color: var(--color-ink-primary);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphism panel base styling */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Premium ambient backdrop gradient orb circles */
+.ambient-glow {
+  position: fixed;
+  width: 60vw;
+  height: 60vw;
+  max-width: 600px;
+  max-height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  transition: all 1s ease;
+}
+
+.dark .ambient-glow {
+  opacity: 0.12;
+  filter: blur(140px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-divider);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
+}
+
