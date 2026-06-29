@@ -12,15 +12,12 @@ Experience the active live platform prototype:
 
 ---
 
----
-
 ## 🚀 Project Documentation
 
 Project Description(Google Doc Link):
 
 👉 **[Project Description](https://docs.google.com/document/d/125py1DpVf4HaMclwaZv1qDIyCOS2zrk1N_wZH-R-xt4/edit?usp=sharing)**
 
----
 
 ## ✨ Key Features
 
